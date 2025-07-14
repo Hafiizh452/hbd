@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vannesa Alfina Junaidi</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      transition: all 1s ease;
+    }
+
+    body {
+      min-height: 100vh;
+      justify-content: flex-start;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #fff;
+      margin: 0;
+      overflow-x: hidden;
+      padding: 20px;
+    }
+
+    h1, p, img {
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 2s forwards;
+    }
+
+    h1 {
+      animation-delay: 0.5s;
+    }
+
+    p {
+      animation-delay: 1s;
+      max-width: 600px;
+      margin: 10px auto;
+    }
+
+    img {
+      animation-delay: 1s;
+      height: 300px;
+      width: 300px;
+      border: 1px solid white;
+      border-radius: 10px;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .container {
+      text-align: center;
+      z-index: 1;
+      width: 100%;
+      max-width: 700px;
+    }
+
+    .love {
+      position: absolute;
+      font-size: 20px;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.8;
+      animation: floatUp 4s linear forwards;
+      user-select: none;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-200px) scale(0.8);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Happy Birthday, Vannesa 💖</h1>
+    <p>I hope this special day brings you endless joy and love.</p>
+    <img src="eca.jpg" alt="eca" onclick="loveBomb('red')" />
+    <img src="2.jpg" alt="eca" onclick="loveBomb('pink')" />
+    <p>
+      Kamu adalah sosok yang begitu istimewa — hangat, kuat, dan selalu penuh cahaya. Di hari spesial ini, aku ingin kamu tahu betapa berharganya dirimu. Semoga setiap langkah yang kamu ambil membawa kebahagiaan, keberanian, dan cinta yang tak pernah habis.<br><br>
+      Teruslah bermimpi, teruslah bersinar, dan jangan pernah ragu dengan kekuatan yang kamu punya. Dunia lebih indah karena ada kamu di dalamnya. Aku doakan semoga semua harapanmu hari ini menjadi kenyataan esok hari, dan kamu selalu dikelilingi oleh orang-orang yang tulus mencintaimu.<br><br>
+    </p>
+  </div>
+
+  <script>
+    function createLove(color) {
+      const love = document.createElement("div");
+      love.className = "love";
+      love.textContent = "❤️";
+
+      const x = Math.random() * window.innerWidth;
+      const y = Math.random() * window.innerHeight;
+      love.style.left = `${x}px`;
+      love.style.top = `${y}px`;
+
+      const size = Math.random() * 20 + 20;
+      love.style.fontSize = `${size}px`;
+      love.style.opacity = Math.random() * 0.4 + 0.6;
+
+      if(color === "red") {
+        love.style.filter = "drop-shadow(0 0 2px #ff4d6d)";
+      } else if(color === "pink") {
+        love.style.filter = "drop-shadow(0 0 2px #ff69b4)";
+      }
+
+      document.body.appendChild(love);
+
+      setTimeout(() => {
+        love.remove();
+      }, 4000);
+    }
+
+    function loveBomb(color) {
+      for (let i = 0; i < 15; i++) {
+        createLove(color);
+      }
+    }
+  </script>
+</body>
+</html>
